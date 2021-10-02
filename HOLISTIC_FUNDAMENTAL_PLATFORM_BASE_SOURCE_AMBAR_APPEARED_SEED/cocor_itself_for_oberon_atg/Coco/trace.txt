@@ -1,0 +1,117 @@
+
+ANY and SYNC sets:
+-----------------
+   2 any  ident number string badString char "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." ".>" "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+   9 any  ident number string badString char "COMPILER" "FROM" "TO" "NESTED" 
+          "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." ".>" "|" "WEAK" "(" 
+          ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+  42 sync EOF "PRODUCTIONS" 
+  98 sync EOF ident string char "PRAGMAS" "COMMENTS" "IGNORE" "PRODUCTIONS" 
+          "=" "(." 
+ 111 any  ident number string char "COMPILER" "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" "<." ".>" "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+ 121 any  ident number string char "COMPILER" "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+ 191 any  ident number string badString char "COMPILER" "IGNORECASE" 
+          "CHARACTERS" "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" 
+          "IGNORE" "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." 
+          ".>" "|" "WEAK" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+ 245 any  ident number string char "COMPILER" "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" "<." ".>" "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+ 255 any  ident number string char "COMPILER" "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" "(." ".)" ??? 
+ 267 any  ident number string char "COMPILER" "IGNORECASE" "CHARACTERS" 
+          "TOKENS" "PRAGMAS" "COMMENTS" "FROM" "TO" "NESTED" "IGNORE" 
+          "PRODUCTIONS" "=" "." "END" "+" "-" ".." "ANY" "<" ">" "<." ".>" "|" 
+          "WEAK" "(" ")" "[" "]" "{" "}" "SYNC" "IF" "CONTEXT" ??? 
+
+---------- states ----------
+                 0: letter  1
+                    digit  2
+                      L 12
+                      3  5
+                      L 13
+                      L 16
+                      L 31
+                      L 17
+                      L 18
+                      L 32
+                      L 20
+                      L 23
+                      L 33
+                      L 24
+                      L 25
+                      L 26
+                      L 27
+                      L 28
+E(           i)  1: #A  1
+E(           n)  2: digit  2
+E(           s)  3:
+E(           b)  4:
+                 5: charCh  6
+                      9  7
+                 6:   3  9
+                 7: printable  8
+                 8: hex  8
+                      3  9
+E(           c)  9:
+E(           d) 10: #A 10
+E(           o) 11: #D 11
+                12: stringCh 12
+                    #E  4
+                      L  3
+                      9 14
+E(           d) 13: digit 10
+                    letter 15
+                14: printable 12
+E(           d) 15: digit 10
+                    letter 15
+                      L 11
+E(           ") 16:
+E(           ") 17:
+E(           ") 18:
+E(           ") 19:
+E(           ") 20:
+E(           ") 21:
+E(           ") 22:
+E(           ") 23:
+E(           ") 24:
+E(           ") 25:
+E(           ") 26:
+E(           ") 27:
+E(           ") 28:
+E(           ") 29:
+E(           ") 30:
+E(           ") 31:   L 19
+                      L 22
+                      L 30
+E(           ") 32:   L 21
+E(           ") 33:   L 29
+
+---------- character classes ----------
+letter    : 'A' .. 'Z' '_' 'a' .. 'z' 
+digit     : '0' .. '9' 
+cr        : 13 
+lf        : 10 
+tab       : 9 
+stringCh  : 0 .. 9 11 .. 12 14 .. '!' '#' .. '[' ']' .. 65535 
+charCh    : 0 .. 9 11 .. 12 14 .. '&' '(' .. '[' ']' .. 65535 
+printable : ' ' .. '~' 
+hex       : '0' .. '9' 'a' .. 'f' 
+#A        : '0' .. '9' 'A' .. 'Z' '_' 'a' .. 'z' 
+#B        : '-' '0' .. '9' 'A' .. 'Z' '_' 'a' .. 'z' 
+#C        : '-' .. '.' '0' .. '9' 'A' .. 'Z' '_' 'a' .. 'z' 
+#D        : '-' .. '.' '0' .. ':' 'A' .. 'Z' '_' 'a' .. 'z' 
+#E        : 10 13 
+

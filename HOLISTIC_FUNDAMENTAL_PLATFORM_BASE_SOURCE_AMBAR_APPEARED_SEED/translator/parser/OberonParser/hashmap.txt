@@ -1,0 +1,6 @@
+egp: кто тут гурь по с++? посоветуйте где хешмэпы лучше взять
+egp: хешмэп надо
+
+std::unordered_map
+
+#include <unordered_map> 
