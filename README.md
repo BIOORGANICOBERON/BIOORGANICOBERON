@@ -13,4 +13,6 @@ Inspired by Antonio Gaudi's La Sagrada Familia Cathedral
 я его давно делал прост из архивов поднял
 ```
 
+&GaudiHologramCrystal https://github.com/HOLISTICRESEARCH/HOLISTICRESEARCH/blob/default/README.md
+
 = PAN URAN OGFU CHILD egp #AESREACTOR +2021-10-02 21:33:49 UTC nanoseconds:754918241
